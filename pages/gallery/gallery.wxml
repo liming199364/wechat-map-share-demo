@@ -1,0 +1,42 @@
+<!--tab.wxml-->
+
+<!-- 因为我的项目当前页面一个tab所以会有有多个瀑布流  这里使用的是scroll-view 在触底的时候会触发多次请求 -->
+<!-- 如果你的项目是单页就这一个瀑布流的话
+     就直接使用view这个组件（删除scroll-view 组件标签改为view即可）
+     在配合注册 onReachBottom（页面上拉触底事件的处理函数）
+     进行上拉加载即可
+-->
+<!-- 
+  parameter：
+    bindscrolltolower： 触发事件
+    lower-threshold：100	距底部/右边多远时（单位px），触发 scrolltolower 事件
+    mode="widthFix" : 给图片设置css widht:100%  这个属性自适应高度。参考官网image组件 即可
+  -->
+<!--建议给当前页面添加一个白色遮罩层 外加加载动画 数据加载完成在关闭 避免网速过慢加载图过慢造成页面使用感不好-->
+<scroll-view scroll-y="true" bindscrolltolower="lower" bindscrolltoupper="refresh" lower-threshold="100" style="height:100%;">
+  <view class="waterfall">
+    <view class="view" style="margin-right:20rpx">
+      <view wx:for="{{Arr1}}" wx:key="imgid">
+        <image src="{{item.url}}" mode="widthFix" data-path="{{item.url}}" bindtap='tapPicture'></image>
+        <text>{{ item.info }}</text>
+      </view>
+    </view>
+    <view class="view">
+      <view wx:for="{{Arr2}}" wx:key="imgid">
+        <image src="{{item.url}}" mode="widthFix" data-path="{{item.url}}" bindtap='tapPicture'></image>
+        <text>{{ item.info }}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+ <!-- 规则提示  -->
+<!-- <view class='mask' hidden='{{!show}}'>
+  <image src="{{picture}}" mode="widthFix" bindtap="hideRule"></image>
+</view> -->
+<!--  end  -->
+
+
+<view class="round-click">
+  <text bindtap='subFormData'>上传图片</text>
+</view>

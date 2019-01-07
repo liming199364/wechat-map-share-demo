@@ -1,0 +1,37 @@
+<!--pages/index/index.wxml-->
+ 
+
+<view class="optClass">
+    <view class='optName'>附件</view> 
+    <view class='optContent' >可上传图片或视频</view>
+</view>
+<view class="optClass" style='padding:0 30rpx;flex-wrap:wrap;'>
+    <view class='uploadimgbox' wx:for="{{upImgArr}}" wx:key="item">
+        <image class='uploadimg' src='{{item.path}}' data-presrc="{{item.path}}" bindtap='previewImg' mode='aspectFill'></image>
+        <cover-view class='progress' wx:if="{{upFilesProgress}}">
+            {{item.progress}}%
+        </cover-view>
+        <cover-view class='delbtn' data-index="{{index}}" data-type="image" bindtap='delFile'>X</cover-view>
+    </view>
+    <view class='uploadimgbox' wx:for="{{upVideoArr}}" wx:key="item">
+        <video class='uploadimg' src="{{item.tempFilePath}}"  controls ></video>
+       <cover-view class='progress' wx:if="{{upFilesProgress}}">
+            {{item.progress}}%
+        </cover-view>
+        <cover-view class='delbtn' data-index="{{index}}" data-type="video" bindtap='delFile'>X</cover-view>
+    </view>
+    
+    <view class='uploadimgbox' wx:if="{{upFilesBtn}}">
+        <image class='uploadbtn' bindtap='uploadFiles' src='./addimgsbtn.png'></image>
+    </view>
+    
+</view>
+
+<view class="inputView">
+<input class="input" placeholder="加入你的介绍吧~" placeholder-style="color: gray" bindinput="listenerInput"/>
+</view>
+
+<view class='subBtnBox'>
+    <button class='subBtn' type='button' bindtap='subFormData'>我要上传</button>
+</view>
+

@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/pictureDisplay/pictureDisplay",
+    "pages/gallery/gallery"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "身边的年",
+    "navigationBarTextStyle": "black"
+  }
+}
